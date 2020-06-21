@@ -20,7 +20,16 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-
+for i = 1:size(X,1);
+  x_pos = X(i,:);
+  dist = zeros(size(centroids,1), 1);
+  for j = 1:size(centroids,1);
+    y = x_pos -  centroids(j,:);
+    dist(j) =  sum(y.^2,2);
+  endfor
+  [V,I] = min(dist);
+  idx(i) = I;
+endfor
 
 
 
